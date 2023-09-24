@@ -1,6 +1,5 @@
 import { Post } from '../classes/Post';
-
-const NUM_POSTS = 35;
+import { NUM_POSTS } from '../config/constants';
 
 /**
  * Interface representing the structure of raw post data fetched from the Reddit API.

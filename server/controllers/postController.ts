@@ -3,9 +3,8 @@ import { Request, Response } from 'express';
 import { categorizeData } from '../helpers/categorizationAlgorithm';
 import { createPosts } from '../helpers/postManagement';
 import PostsModel from '../models/PostModel';
+import { REDDIT_ENDPOINT } from '../config/constants';
 
-const NUM_POSTS = 35;
-const REDDIT_ENDPOINT = `https://www.reddit.com/r/football/hot.json?limit=${NUM_POSTS}`;
 
 export const getPosts = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -48,7 +47,6 @@ export const getCategoriesFromDB = async (req: Request, res: Response): Promise<
     }
 };
 
-// Bonus: Get a specific category by name
 export const getCategoryByName = async (req: Request, res: Response): Promise<void> => {
     const categoryName = req.params.name;
 
