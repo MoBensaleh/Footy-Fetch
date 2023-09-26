@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography, Button, Link, CardActionArea } from "@mui/material";
 import styles from '../../styles/Post.module.scss';
-import ReadMoreAndLess from "react-read-more-less";
+// import ReadMoreAndLess from "react-read-more-less";
 
 import { PostProps } from "./types";
 
@@ -13,13 +13,7 @@ const Post: React.FC<PostProps> = ({ categoryType, title, description = "", exte
         <CardContent>
           <Typography className={styles.title} component="p">{title}</Typography>
           <div className={styles.description}>
-            <ReadMoreAndLess
-              className="read-more-content"
-              readMoreText=" Read more"
-              readLessText=" Read less"
-            >
-              {description}
-            </ReadMoreAndLess>
+            {description}
           </div>
           <Button
               component={Link}
