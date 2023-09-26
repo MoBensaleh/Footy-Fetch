@@ -1,0 +1,28 @@
+* {
+  font-family: "Noto Sans Buhid", sans-serif;
+  box-sizing: border-box;
+
+  /*Font Sizes*/
+  --fs-1: 2.5rem;
+  --fs-2: 2rem;
+  --fs-3: 1.5rem;
+  --fs-4: 1.3rem;
+
+  /*Colors*/
+  --clr-primary: #48a4c8;
+  --clr-selected: #377892;
+  --clr-black: rgb(45, 45, 45);
+  --clr-white: #fff;
+
+  /*Font Weights*/
+  --fw-light: 200;
+  --fw-reg: 400;
+  --fw-bold: 900;
+
+  /*Box Shadows*/
+  --bs: 0 4px 12px -6px var(--clr-black);
+
+  /*Border Radius*/
+  --br-button: 5px;
+  --br-background: 10px;
+}
