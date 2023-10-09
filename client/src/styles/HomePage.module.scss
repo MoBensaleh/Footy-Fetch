@@ -1,11 +1,11 @@
 .home {
-  &__logo {
+  .logo {
     max-width: 200px;
     margin-left: 30px;
     margin-top: -40px;
   }
 
-  &__title {
+  .title {
     font-size: var(--fs-2);
     font-weight: var(--fw-reg);
     text-align: center;
@@ -21,22 +21,25 @@
       margin-top: 0px;
     }
   }
-
-  &__button {
-    display: flex;
-    justify-content: center;
+  .button {
+    font-weight: 900;
+    font-size: 1.3rem;
     text-transform: none;
-    margin-top: 35px;
+    margin: 35px 10px;
+    
+    @media screen and (min-width: 550px) {
+      font-size: 1.5rem;
+    }
   }
 
-  &__footer {
+  .footer {
     background-color: grey;
     padding: 10px;
     position: relative;
     width: 100%;
   }
 
-  &__footerText {
+  .footerText {
     font-size: var(--fs-4);
     text-align: center;
     margin-top: 13px;

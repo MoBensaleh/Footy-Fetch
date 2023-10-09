@@ -4,7 +4,8 @@ import { categorizeData } from '../helpers/categorizationAlgorithm';
 import { createPosts } from '../helpers/postManagement';
 import PostsModel from '../models/PostModel';
 import { REDDIT_ENDPOINT } from '../config/constants';
-
+import NodeCache from 'node-cache';
+import PostModel from '../models/PostModel'; 
 
 export const getPosts = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -25,13 +26,46 @@ export const getPosts = async (req: Request, res: Response): Promise<void> => {
 
         await savePosts.save();
 
-        res.status(200).send(categorizedData);
+        res.status(200).send(response.data);
 
     } catch (err) {
         console.error("Error while handling posts: ", err);
         res.status(500).send({ error: 'Failed to fetch and process posts' });
     }
 };
+
+const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
+
+export const getAnalytics = async (req: Request, res: Response) => {
+    try {
+        // Check cache
+        const cachedData = myCache.get("analyticsData");
+        if (cachedData) {
+            return res.status(200).json(cachedData);
+        }
+
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+        const isoWeekAgo = oneWeekAgo.toISOString();
+
+        const postsCountLastWeek = await PostModel.countDocuments({
+            date: { $gte: isoWeekAgo }
+        });
+
+
+        const analyticsData = {
+            postsCountLastWeek,
+        };
+
+        // Cache and send the response
+        myCache.set("analyticsData", analyticsData, 3600); 
+        res.status(200).json(analyticsData);
+    } catch (error) {
+        console.error("Failed to fetch analytics: ", error);
+        res.status(500).json({ message: "Failed to fetch analytics.", error: error });
+    }
+};
+
 
 export const getCategoriesFromDB = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -47,24 +81,3 @@ export const getCategoriesFromDB = async (req: Request, res: Response): Promise<
     }
 };
 
-export const getCategoryByName = async (req: Request, res: Response): Promise<void> => {
-    const categoryName = req.params.name;
-
-    try {
-        const categories = await PostsModel.find().sort({ date: -1 }).limit(1);
-        if (categories.length) {
-            const currentCategories = categories[0].categories;
-            const category = Object.values(currentCategories).find(cat => cat.name === categoryName);
-            if (category) {
-                res.status(200).send(category);
-            } else {
-                res.status(404).send({ error: `No category found with name: ${categoryName}` });
-            }
-        } else {
-            res.status(404).send({ error: 'No categories found in DB' });
-        }
-    } catch (err) {
-        console.error(`Error fetching category by name ${categoryName}: `, err);
-        res.status(500).send({ error: 'Failed to fetch category by name' });
-    }
-};

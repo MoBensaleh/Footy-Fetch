@@ -7,36 +7,40 @@
       transform: translateY(-3px);
       box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
     }
-  }
-  
-  .title {
-    font-weight: bold;
-    font-size: 1.5rem;
-    color: #004d40; // Soccer field green shade
-  }
-  
-  .description {
-    font-size: 1rem;
-    color: #4d4d4d;
-    margin: 10px 0;
-  }
-  
-  .button {
-    text-transform: none;
-    margin: 0 auto;
-    display: flex;
-    background-color: #00796b; // Soccer field green shade
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 3px;
-    transition: background-color 0.3s ease-in-out;
-  
-    &:hover {
-      background-color: #004d40;
-    }
-  
-    @media screen and (min-width: 550px) {
+
+    .title {
+      font-weight: bold;
       font-size: 1.5rem;
+      color: #004d40; 
+      text-align: center;
+
     }
+    
+    .description {
+      font-size: 1rem;
+      color: #4d4d4d;
+      margin: 10px 0;
+      text-align: center;
+    }
+    
+    .button {
+      text-transform: none;
+      margin: 0 auto;
+      display: flex;
+      background-color: #00796b; 
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 3px;
+      transition: background-color 0.3s ease-in-out;
+    
+      &:hover {
+        background-color: #004d40;
+      }
+    
+      @media screen and (min-width: 550px) {
+        font-size: 1.5rem;
+      }
+    }
+    
   }
   

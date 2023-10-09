@@ -1,8 +1,8 @@
-import styles from '../../styles/HomePage.module.scss';
+import styles from '../styles/HomePage.module.scss';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
-// import logo from "../../images/CarChat Logo.png";
+// import logo from "../../images/FootyFetchLogo.png";
 import { Link } from "@mui/material";
 import Categories from "../components/Category";
 
@@ -12,11 +12,11 @@ const HomePage: React.FC = () =>{
   return (
     <div className={styles.home}>
       <Link href="/">
-        <img className={styles.logo} alt="CarChat Logo" />
+        <img className={styles.logo} alt="FootyFetch Logo" />
       </Link>
       <h1 className={styles.title}>Explore what’s trending in the football world!</h1>
       {!showCategories && (
-        <Typography component="div" align="center">
+        <Typography component="div" align="center" className={styles.home__buttons_wrapper}>
           <Button
             variant="contained"
             color="primary"
@@ -32,7 +32,7 @@ const HomePage: React.FC = () =>{
         <div className={styles.footer}>
           <h3 className={styles.footerText}>
             Data for this application is fetched from Reddit's{" "}
-            <Link target="_blank" href="https://www.reddit.com/r/football/">r/football</Link> subreddit.
+            <Link target="_blank" href="https://www.reddit.com/r/soccer/">r/soccer</Link> subreddit.
           </h3>
           <h3 className={styles.footerText}>
             This project was developed by <Link target="_blank" href="https://www.mohamedbensaleh.com/">Mohamed Bensaleh</Link>.

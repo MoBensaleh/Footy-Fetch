@@ -5,6 +5,8 @@ import createHttpError, { isHttpError } from "http-errors";
 import cors from "cors";
 import dotenv from 'dotenv'
 
+import postRoutes from './routes/postRoutes'
+
 // URI Configuration
 dotenv.config()
 
@@ -21,6 +23,9 @@ app.get('/', (req: express.Request, res: express.Response) => {
     res.setHeader('Content-Type', 'text/html')
     res.end('<h1>Hello World</h1>')
 })
+
+/* Routes */
+app.use("/api", postRoutes);
 
 app.use((req, res, next) => {
     next(createHttpError(404, "Endpoint not found"));

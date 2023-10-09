@@ -1,6 +1,5 @@
 import { Card, CardContent, Typography, Button, Link, CardActionArea } from "@mui/material";
 import styles from '../../styles/Post.module.scss';
-// import ReadMoreAndLess from "react-read-more-less";
 
 import { PostProps } from "./types";
 
@@ -12,21 +11,11 @@ const Post: React.FC<PostProps> = ({ categoryType, title, description = "", exte
       <CardActionArea>
         <CardContent>
           <Typography className={styles.title} component="p">{title}</Typography>
-          <div className={styles.description}>
+          <h2 className={styles.description}>
             {description}
-          </div>
-          <Button
-              component={Link}
-              target="_blank"
-              href={externalLink}
-              className={styles.button}
-          >
-              <Typography variant="body2">
-                  {categoryType === "general" ? "See Video" : "See News Article"}
-              </Typography>
-          </Button>
+          </h2>
 
-          {categoryType === "discussion" && (
+          {categoryType === "discussion" ? (
               <Button
                   component={Link}
                   target="_blank"
@@ -37,6 +26,17 @@ const Post: React.FC<PostProps> = ({ categoryType, title, description = "", exte
                       See Online Discussion
                   </Typography>
               </Button>
+          ): (
+            <Button
+              component={Link}
+              target="_blank"
+              href={externalLink}
+              className={styles.button}
+          >
+              <Typography variant="body2">
+                  {categoryType === "general" ? "See Video" : "See News Article"}
+              </Typography>
+            </Button>
           )}
         </CardContent>
       </CardActionArea>
