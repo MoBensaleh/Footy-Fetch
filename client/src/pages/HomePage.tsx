@@ -5,6 +5,7 @@ import { useState } from "react";
 // import logo from "../../images/FootyFetchLogo.png";
 import { Link } from "@mui/material";
 import Categories from "../components/Category";
+import Analytics from "../components/Analytics";
 
 const HomePage: React.FC = () =>{
   const [showCategories, setShowCategories] = useState(false);
@@ -28,6 +29,7 @@ const HomePage: React.FC = () =>{
         </Typography>
       )}
       {showCategories && <Categories />}
+      {!showCategories && <Analytics />}
       {showCategories && (
         <div className={styles.footer}>
           <h3 className={styles.footerText}>

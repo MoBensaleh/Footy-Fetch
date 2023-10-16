@@ -1,0 +1,126 @@
+.analytics {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    margin: 30px 0;
+    width: 100%; 
+    text-align: center; 
+
+    @media screen and (min-width: 550px) {
+        flex-direction: row; 
+        justify-content: space-around;
+        align-items: center; 
+        text-align: left;
+    }
+}
+
+
+.postsCount,
+.growth {
+    background-color: #f8f8f8; 
+    border-radius: 50px;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    min-height: 230px;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1.25em;
+        margin: 0;
+    }
+}
+
+.mostCommented {
+    position: relative; 
+    width: 200px; 
+    height: 200px; 
+
+    .soccerBall {
+        width: 100%; 
+        height: 100%; 
+        border-radius: 50%;
+        position: relative;
+        background: url('https://raw.githubusercontent.com/Yousuke777/texture/main/soccer-ball-02.png') repeat;
+        background-size: 200%;
+        box-shadow: -20px -10px 30px rgba(0, 0, 0, .75) inset;
+        animation: rotate-anim 2s linear infinite;
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            margin: auto;
+            width: 80px;
+            height: 5px;
+            border-radius: 50%;
+            background: #000;
+            filter: blur(5px);
+            z-index: -1;
+        }
+    }
+    .externalLink{
+        text-decoration: none;
+    }
+
+    .title { 
+        font-size: 1.25em;
+        background-color: rgba(255, 255, 255, 0.75); 
+        padding: 5px;
+        border-radius: 50px; 
+        max-width: 90%; 
+        text-align: center; 
+        word-break: break-word; 
+        overflow: hidden; 
+        display: inline-block;
+        font-weight: bold;
+        color: var(--clr-black);
+
+        &:hover{
+            color: var(--clr-white);
+            background-color: rgba(0, 0, 0, .75);
+            cursor: pointer;
+
+
+        }
+    }
+
+    @keyframes rotate-anim {
+        100% {
+            background-position: -100% 0;
+        }
+    }
+}
+
+
+.growth {
+    p {
+        font-size: 1.25em;
+        margin: 0;
+
+        &.up {
+            color: green;
+        }
+
+        &.down {
+            color: red;
+        }
+    }
+
+    .arrowUp,
+    .arrowDown {
+        font-size: 1.5em;
+    }
+}

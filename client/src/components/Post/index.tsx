@@ -4,10 +4,9 @@ import styles from '../../styles/Post.module.scss';
 import { PostProps } from "./types";
 
 const Post: React.FC<PostProps> = ({ categoryType, title, description = "", externalLink, url }) => {
-  const width = categoryType === "discussion" ? 1000 : 500;
 
   return (
-    <Card className={styles.card} sx={{ maxWidth: width }}>
+    <Card className={styles.card} sx={{ maxWidth: 1000 }}>
       <CardActionArea>
         <CardContent>
           <Typography className={styles.title} component="p">{title}</Typography>

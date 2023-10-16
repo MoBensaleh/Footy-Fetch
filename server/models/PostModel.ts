@@ -24,7 +24,27 @@ const CategorySchema = new mongoose.Schema<CategoryDocument>({
         title: String,
         description: String,
         externalLink: String,
-        url: String
+        url: String,
+        upvoteRatio: {
+            type: Number,
+            required: true
+        },
+        score: {
+            type: Number,
+            required: true
+        },
+        numComments: {
+            type: Number,
+            required: true
+        },
+        author: {
+            type: String,
+            required: true
+        },
+        createdUtc: {
+            type: Number,
+            required: true
+        }
     }]
 });
 

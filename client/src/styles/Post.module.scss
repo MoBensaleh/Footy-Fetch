@@ -27,14 +27,14 @@
       text-transform: none;
       margin: 0 auto;
       display: flex;
-      background-color: #00796b; 
+      background-color: var(--clr-selected); 
       color: #fff;
       padding: 8px 12px;
       border-radius: 3px;
       transition: background-color 0.3s ease-in-out;
     
       &:hover {
-        background-color: #004d40;
+        background-color: var(--clr-primary);
       }
     
       @media screen and (min-width: 550px) {
