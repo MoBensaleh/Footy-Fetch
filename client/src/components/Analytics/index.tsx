@@ -32,12 +32,6 @@ const Analytics: React.FC = () => {
     
     return (
         <div className={styles.analytics}>
-            {/* Posts Count Last Week */}
-            <div className={styles.postsCount}>
-                <h1>{postsCount}</h1>
-                <h2>Posts Last Week</h2>
-            </div>
-    
             {/* Most Commented Post */}
             {mostCommentedPost && (
                 <div className={styles.mostCommented}>
@@ -50,36 +44,43 @@ const Analytics: React.FC = () => {
                     </Link>
                 </div>
             )}
-            
     
-            {/* User Interaction Growth */}
-            <div className={styles.growth}>
-                {typeof growthRate === "number" ? (
-                    <p className={growthRate > 0 ? styles.up : growthRate < 0 ? styles.down : ''}>
-                        {growthRate > 0 ? (
-                            <>
-                                <span className={styles.arrowUp}>&uarr;</span>
-                                <span>+{growthRate.toFixed(2)}%</span>
-                            </>
-                        ) : growthRate === 0 ? (
-                            <>
-                                <span>{growthRate}%</span>
-                            </>
-                        ) : (
-                            <>
-                                <span className={styles.arrowDown}>&darr;</span>
-                                <span>{growthRate.toFixed(2)}%</span>
-                            </>
-                        )}
-                    </p>
-                ) : (
-                    <p>N/A</p>
-                )}
-                <h2>User Interaction Growth This Week</h2>
+            <div className={styles.otherStats}>
+                {/* Posts Count Last Week */}
+                <div className={styles.postsCount}>
+                    <h1>{postsCount}</h1>
+                    <h2>Posts Last Week</h2>
+                </div>
+    
+                {/* User Interaction Growth */}
+                <div className={styles.growth}>
+                    {typeof growthRate === "number" ? (
+                        <p className={growthRate > 0 ? styles.up : growthRate < 0 ? styles.down : ''}>
+                            {growthRate > 0 ? (
+                                <>
+                                    <span className={styles.arrowUp}>&uarr;</span>
+                                    <span>+{growthRate.toFixed(2)}%</span>
+                                </>
+                            ) : growthRate === 0 ? (
+                                <>
+                                    <span>{growthRate}%</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className={styles.arrowDown}>&darr;</span>
+                                    <span>{growthRate.toFixed(2)}%</span>
+                                </>
+                            )}
+                        </p>
+                    ) : (
+                        <p>N/A</p>
+                    )}
+                    <h2>User Interaction Growth This Week</h2>
+                </div>
             </div>
-
         </div>
     );
+    
 };
 
 export default Analytics;

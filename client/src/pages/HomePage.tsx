@@ -7,13 +7,15 @@ import { Link } from "@mui/material";
 import Categories from "../components/Category";
 import Analytics from "../components/Analytics";
 
+
+
 const HomePage: React.FC = () =>{
   const [showCategories, setShowCategories] = useState(false);
 
   return (
     <div className={styles.home}>
       <Link href="/">
-        <img className={styles.logo} alt="FootyFetch Logo" />
+        <img src="/logo.png" className={styles.logo} alt="FootyFetch Logo" />
       </Link>
       <h1 className={styles.title}>Explore what’s trending in the football world!</h1>
       {!showCategories && (
