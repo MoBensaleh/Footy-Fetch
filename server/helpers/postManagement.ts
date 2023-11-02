@@ -1,10 +1,12 @@
 import { Post } from '../classes/Post';
 import { NUM_POSTS } from '../config/constants';
+import {ObjectId} from "mongoose";
 
 /**
  * Interface representing the structure of raw post data fetched from the Reddit API.
  */
 interface RawPostData {
+    _id: ObjectId
     title: string;
     selftext?: string;
     url_overridden_by_dest?: string;
@@ -23,6 +25,7 @@ interface RawPostData {
  * @returns {Post} - Returns a Post object.
  */
 const createPostFromData = (postData: RawPostData): Post => {
+    const _id = postData._id;
     const title = postData.title;
     const description = postData.selftext && postData.selftext !== "" ? postData.selftext : null;
     const externalLink = postData.url_overridden_by_dest && postData.url_overridden_by_dest !== "" ? postData.url_overridden_by_dest : null;
@@ -33,7 +36,7 @@ const createPostFromData = (postData: RawPostData): Post => {
     const author = postData.author;
     const createdUTC = postData.created_utc;
 
-    return new Post(title, description, externalLink, url, upvoteRatio, score, numComments, author, createdUTC);
+    return new Post(_id, title, description, externalLink, url, upvoteRatio, score, numComments, author, createdUTC);
 };
 
 /**

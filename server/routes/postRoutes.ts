@@ -12,5 +12,10 @@ router.get("/categories", PostController.getCategoriesFromDB);
 // GET db analytics from server
 router.get("/analytics", PostController.getAnalytics);
 
+// GET db analytics from server
+router.post("/chatgpt/:postId", PostController.askChatGPTAboutPost);
+
+
+
 
 export default router;
