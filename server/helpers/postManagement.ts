@@ -1,12 +1,12 @@
 import { Post } from '../classes/Post';
 import { NUM_POSTS } from '../config/constants';
-import {ObjectId} from "mongoose";
+import mongoose from "mongoose"
 
 /**
  * Interface representing the structure of raw post data fetched from the Reddit API.
  */
 interface RawPostData {
-    _id: ObjectId
+    _id: mongoose.Types.ObjectId,
     title: string;
     selftext?: string;
     url_overridden_by_dest?: string;
@@ -25,7 +25,7 @@ interface RawPostData {
  * @returns {Post} - Returns a Post object.
  */
 const createPostFromData = (postData: RawPostData): Post => {
-    const _id = postData._id;
+    const _id = new mongoose.Types.ObjectId();
     const title = postData.title;
     const description = postData.selftext && postData.selftext !== "" ? postData.selftext : null;
     const externalLink = postData.url_overridden_by_dest && postData.url_overridden_by_dest !== "" ? postData.url_overridden_by_dest : null;

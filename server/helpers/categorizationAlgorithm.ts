@@ -5,6 +5,7 @@ export const categorizeData = (posts: IPost[]) => {
   const discussionsArray: IPost[] = [];
   const newsArray: IPost[] = [];
   const generalArray: IPost[] = [];
+  console.log(posts);
 
   posts.forEach((post) => {
     if (post.description) {

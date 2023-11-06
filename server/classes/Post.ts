@@ -1,7 +1,7 @@
 import { IPost } from "../types";
-import { ObjectId } from 'mongoose';
+import mongoose from 'mongoose';
 export class Post implements IPost {
-  _id: ObjectId;
+  _id: mongoose.Types.ObjectId;
   title: string;
   description: string | null;
   externalLink: string | null;
@@ -13,7 +13,7 @@ export class Post implements IPost {
   createdUtc: number;
 
   constructor(
-    _id: ObjectId,
+    _id: mongoose.Types.ObjectId,
     title: string,
     description: string | null,
     externalLink: string | null,

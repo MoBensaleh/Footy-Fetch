@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Grid, CircularProgress } from "@mui/material";
 
 import { CategoryType, PostType, CategoryPosts } from './types';
-import Post from "../Post"; 
+import Post from "../Post";
 import styles from '../../styles/Category.module.scss';
 
 /**
@@ -19,48 +19,48 @@ const Categories: React.FC = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-        try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/posts`);
-            
-            // Transform the data into the desired shape
-            const transformedData: CategoryPosts = {
-                news: [],
-                discussion: [],
-                general: []
-            };
-            
-            // const data = JSON.parse(response.data);
-            console.log(response.data)
-            response.data.forEach((category: any) => {
-                switch (category.name) {
-                    case 'news':
-                        transformedData.news = category.posts;
-                        break;
-                    case 'discussions': 
-                        transformedData.discussion = category.posts;
-                        break;
-                    case 'general':
-                        transformedData.general = category.posts;
-                        break;
-                    default:
-                        break;
-                }
-            });
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_ENDPOINT}/api/posts`);
 
-            // Set the state with the transformed data
-            setPosts(transformedData);
-            setIsAPILoading(false);
-        } catch (error) {
-            console.error("Error fetching posts:", error);
-            setIsAPILoading(false);
-        }
+        // Transform the data into the desired shape
+        const transformedData: CategoryPosts = {
+          news: [],
+          discussion: [],
+          general: []
+        };
+
+        // const data = JSON.parse(response.data);
+        console.log(response.data)
+        response.data.forEach((category: any) => {
+          switch (category.name) {
+            case 'news':
+              transformedData.news = category.posts;
+              break;
+            case 'discussions':
+              transformedData.discussion = category.posts;
+              break;
+            case 'general':
+              transformedData.general = category.posts;
+              break;
+            default:
+              break;
+          }
+        });
+
+        // Set the state with the transformed data
+        setPosts(transformedData);
+        setIsAPILoading(false);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        setIsAPILoading(false);
+      }
     };
     fetchCategories();
-}, []);
+  }, []);
 
 
   const displayPostsForCategory = (category: CategoryType) => posts[category]?.map((post: PostType) => (
-    <Grid key={post.title} item alignItems={"center"} xs={12} sm={12} md={6} lg={4} xl={3}>
+    <Grid key={post.title} item alignItems={"center"} xs={12} sm={12} md={6} lg={4} xl={3} >
       <Post {...post} categoryType={category} />
     </Grid>
   ));
@@ -80,15 +80,15 @@ const Categories: React.FC = () => {
           </Button>
         ))}
       </Typography>
-      
+
       {isAPILoading ? (
         <CircularProgress className={styles.loadingIndicator} />
       ) : (
 
-        <Grid container spacing={4}  columnSpacing={{ sm: 2, md: 3 }} className={styles.gridWrapper}>
-          {displayPostsForCategory(selectedCategory)}
-        </Grid>
-      )}
+          <Grid container spacing={4} columnSpacing={{ sm: 2, md: 3 }} className={styles.gridWrapper}>
+            {displayPostsForCategory(selectedCategory)}
+          </Grid>
+        )}
     </div>
   );
 }

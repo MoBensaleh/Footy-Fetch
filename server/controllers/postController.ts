@@ -5,10 +5,11 @@ import { createPosts } from '../helpers/postManagement';
 import PostsModel from '../models/PostModel';
 import { REDDIT_ENDPOINT } from '../config/constants';
 import NodeCache from 'node-cache';
-import PostModel from '../models/PostModel'; 
+import PostModel from '../models/PostModel';
 import { IPost } from '../types';
 import OpenAI from 'openai';
 import { PostDocument } from '../models/PostModel';
+import mongoose from "mongoose"
 
 
 export const getPosts = async (req: Request, res: Response): Promise<void> => {
@@ -27,7 +28,16 @@ export const getPosts = async (req: Request, res: Response): Promise<void> => {
                 categoryThree: categorizedData[2]
             }
         });
+        console.log(savePosts);
 
+        // Ensure each post has an _id before saving
+        (['categoryOne', 'categoryTwo', 'categoryThree'] as const).forEach((category, index) => {
+            savePosts.categories[category].posts = savePosts.categories[category].posts.map((post, postIndex) => {
+                const newId = new mongoose.Types.ObjectId();
+                categorizedData[index].posts[postIndex]._id = newId;  // Update the ID in categorizedData
+                return { ...post, _id: newId };
+            });
+        });
         await savePosts.save();
 
         res.status(200).send(categorizedData);
@@ -39,12 +49,15 @@ export const getPosts = async (req: Request, res: Response): Promise<void> => {
 };
 
 
+const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 export const getAnalytics = async (req: Request, res: Response) => {
-    const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
     try {
         // Check cache
         const cachedData = myCache.get("analyticsData");
         if (cachedData) {
+            console.log("Serving data from cache");
+            res.setHeader('X-Cache', 'HIT');
+            res.setHeader('Cache-Control', 'public, max-age=3600'); 
             return res.status(200).json(cachedData);
         }
 
@@ -56,9 +69,9 @@ export const getAnalytics = async (req: Request, res: Response) => {
 
         const isoWeekAgo = oneWeekAgo.toISOString();
 
-        const oneWeekAgoUtc = Math.floor(oneWeekAgo.getTime() / 1000); 
+        const oneWeekAgoUtc = Math.floor(oneWeekAgo.getTime() / 1000);
         const twoWeeksAgoUtc = Math.floor(twoWeeksAgo.getTime() / 1000);
-        
+
 
         const postsCountLastWeek = await PostModel.countDocuments({
             date: { $gte: isoWeekAgo }
@@ -121,10 +134,12 @@ export const getAnalytics = async (req: Request, res: Response) => {
                     },
                     isTwoWeeksAgo: {
                         $cond: {
-                            if: { $and: [
-                                { $gte: ["$allPosts.createdUtc", twoWeeksAgoUtc] },
-                                { $lt: ["$allPosts.createdUtc", oneWeekAgoUtc] }
-                            ]},
+                            if: {
+                                $and: [
+                                    { $gte: ["$allPosts.createdUtc", twoWeeksAgoUtc] },
+                                    { $lt: ["$allPosts.createdUtc", oneWeekAgoUtc] }
+                                ]
+                            },
                             then: 1,
                             else: 0
                         }
@@ -177,7 +192,7 @@ export const getAnalytics = async (req: Request, res: Response) => {
         };
 
         // Cache and send the response
-        myCache.set("analyticsData", analyticsData, 3600); 
+        myCache.set("analyticsData", analyticsData, 3600); // TTL 1 hour
         res.status(200).json(analyticsData);
     } catch (error) {
         console.error("Failed to fetch analytics: ", error);
@@ -207,7 +222,7 @@ export const askChatGPTAboutPost = async (req: Request, res: Response) => {
             return res.status(404).json({ message: "Post not found!" });
         }
 
-        let foundPost: IPost | null = null; 
+        let foundPost: IPost | null = null;
 
         const categoryKeys = ['categoryOne', 'categoryTwo', 'categoryThree'];
 
@@ -234,7 +249,7 @@ export const askChatGPTAboutPost = async (req: Request, res: Response) => {
 
         const requestPayload: OpenAI.Chat.Completions.ChatCompletionCreateParamsNonStreaming = {
             model: "gpt-3.5-turbo-0613",
-            messages: [{role: "user", content: prompt}],
+            messages: [{ role: "user", content: prompt }],
             temperature: 0,
             max_tokens: 1000
         };

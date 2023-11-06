@@ -2,6 +2,7 @@
   border: 1px solid #d2d2d2;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+  padding-bottom: 20px;
 
   &:hover {
     transform: translateY(-3px);
@@ -41,4 +42,27 @@
     }
   }
 
+  .askButton {
+    text-transform: none;
+    margin: 0 auto;
+    display: flex;
+    padding: 6px 12px;
+    border-radius: 3px;
+    background-color: #5A5691;
+    color: #fff;
+
+    @media screen and (min-width: 550px) {
+      font-size: 1.1rem;
+    }
+
+    &:hover {
+      color: #5A5691;
+      background-color: #d7d7e5;
+    }
+  }
+}
+
+.MuiTextField-root,
+.MuiButton-root {
+  color: var(--clr-selected) !important;
 }

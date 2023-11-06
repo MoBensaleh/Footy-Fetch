@@ -15,9 +15,15 @@ const app = express();
 
 app.use(morgan("dev"));
 
-app.use(express.json());
+app.use(cors(
+    { 
+    origin: process.env.CLIENT_ENDPOINT, 
+    methods: ["GET","POST"], 
+    credentials: true 
+    }
+));
 
-app.use(cors({ origin: process.env.CLIENT_ENDPOINT, methods: "GET,POST,PUT,DELETE", credentials: true }));
+app.use(express.json());
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.setHeader('Content-Type', 'text/html')

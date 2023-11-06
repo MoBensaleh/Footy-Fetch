@@ -14,13 +14,13 @@ export interface PostDocument extends Document {
         categoryThree: CategoryDocument;
     };
 }
-
 const CategorySchema = new mongoose.Schema<CategoryDocument>({
     name: {
         type: String,
         required: true
     },
     posts: [{
+        _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
         title: String,
         description: String,
         externalLink: String,

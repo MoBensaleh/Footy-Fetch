@@ -8,8 +8,7 @@ import Categories from "../components/Category";
 import Analytics from "../components/Analytics";
 
 
-
-const HomePage: React.FC = () =>{
+const HomePage: React.FC = () => {
   const [showCategories, setShowCategories] = useState(false);
 
   return (
@@ -47,5 +46,5 @@ const HomePage: React.FC = () =>{
     </div>
   );
 }
-  
+
 export default HomePage;
