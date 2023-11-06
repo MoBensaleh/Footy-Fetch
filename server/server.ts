@@ -1,5 +1,5 @@
 import connectDB from './db/conn';
-import app from "./api";
+import app from "./index";
 
 
 // Port
