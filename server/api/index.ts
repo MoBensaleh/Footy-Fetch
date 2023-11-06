@@ -5,7 +5,7 @@ import createHttpError, { isHttpError } from "http-errors";
 import cors from "cors";
 import dotenv from 'dotenv'
 
-import postRoutes from './routes/postRoutes'
+import postRoutes from '../routes/postRoutes'
 
 // URI Configuration
 dotenv.config()
