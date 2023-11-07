@@ -12,7 +12,7 @@
             "dest": "./index.ts",
             "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
             "headers": {
-                "Access-Control-Allow-Origin": "https://footy-fetch-frontend.vercel.app/"
+                "Access-Control-Allow-Origin": "*"
             }
         }
     ]
