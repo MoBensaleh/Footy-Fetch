@@ -4,6 +4,7 @@ import morgan from "morgan";
 import createHttpError, { isHttpError } from "http-errors";
 import cors from "cors";
 import dotenv from 'dotenv'
+import connectDB from './db/conn';
 
 import postRoutes from './routes/postRoutes'
 
@@ -48,5 +49,15 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
     }
     res.status(statusCode).json({ error: errorMessage });
 });
+
+const PORT = process.env.PORT || 5000;
+
+
+// Connect to MongoDB
+connectDB().then(()=>{
+    app.listen(PORT, () => {
+        console.log(`Server started on port ${PORT}`);
+    });
+}).catch(console.error)
 
 export default app;
