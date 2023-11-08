@@ -9,11 +9,17 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "./server.ts",
+            "dest": "./index.ts",
             "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
             "headers": {
                 "Access-Control-Allow-Origin": "*"
             }
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/server/(.*)",
+            "destination": "/server/index.ts"
         }
     ]
 }
