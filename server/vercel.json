@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "./server.ts",
+            "src": "./index.ts",
             "use": "@vercel/node"
         }
     ],
@@ -15,8 +15,5 @@
                 "Access-Control-Allow-Origin": "*"
             }
         }
-    ],
-    "rewrites": [
-        {"source": "/(.*)", "destination": "/"}
     ]
 }
