@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "@mui/material";
 import Categories from "../components/Category";
 import Analytics from "../components/Analytics";
+import Footer  from '../components/Footer';
 
 
 const HomePage: React.FC = () => {
@@ -43,6 +44,7 @@ const HomePage: React.FC = () => {
           </h3>
         </div>
       )}
+      <Footer/>
     </div>
   );
 }
