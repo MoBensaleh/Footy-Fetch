@@ -2,7 +2,11 @@
   .buttonsWrapper {
     display: flex;
     justify-content: center;
-    margin-top: 35px;
+    margin-top: 25px;
+    @media screen and (min-width: 550px) {
+      margin-top: 35px;
+    }
+
   }
 
   .categoryButton {
@@ -29,7 +33,7 @@
 
   .gridWrapper {
     max-width: 2080px;
-    margin: 50px auto 100px;
+    margin: 20px auto 100px;
     width: 100%;
     box-sizing: border-box;
   }

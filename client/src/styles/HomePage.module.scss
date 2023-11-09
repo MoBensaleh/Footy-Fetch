@@ -1,7 +1,8 @@
 .home {
   .logo {
     max-width: 200px;
-    margin-left: 30px;
+    margin-left: 13px;
+    margin-top: 10px;
     color: var(--clr-primary);
   }
 
@@ -10,7 +11,7 @@
     font-weight: var(--fw-reg);
     text-align: center;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
     padding: 5px;
     max-width: 750px;
     border: 4px solid var(--clr-selected);
@@ -18,14 +19,14 @@
 
     @media screen and (min-width: 550px) {
       font-size: var(--fs-1);
-      margin-top: 50px;
+      margin-top: 40px;
     }
   }
   .button {
     font-weight: 900;
     font-size: 1.3rem;
     text-transform: none;
-    margin: 35px 10px;
+    margin: 20px 10px;
     background-color: var(--clr-selected);
 
     &:hover {
@@ -34,6 +35,7 @@
   
     @media screen and (min-width: 550px) {
       font-size: 1.5rem;
+      margin: 35px 10px;
     }
   }
 
