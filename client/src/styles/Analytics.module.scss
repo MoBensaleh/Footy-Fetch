@@ -69,8 +69,13 @@
 
 .mostCommented {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
+
+    @media screen and (min-width: 550px) {
+        width: 200px;
+        height: 200px;
+    }
 
     .soccerBall {
         width: 100%;
@@ -106,7 +111,7 @@
     }
 
     .title {
-        font-size: 1.25em;
+        font-size: 1em;
         background-color: rgba(255, 255, 255, 0.75);
         padding: 5px;
         border-radius: 50px;
@@ -123,6 +128,11 @@
             background-color: rgba(0, 0, 0, .75);
             cursor: pointer;
         }
+
+        @media screen and (min-width: 550px) {
+            font-size: 1.25em;
+        }
+        
     }
 
     @keyframes rotate-anim {
