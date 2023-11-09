@@ -1,8 +1,21 @@
 {
-    "rewrites":[
+    "version": 2,
+    "builds": [
       {
-        "source": "/api/(.*)",
-        "destination" : "/server/server.ts"
+        "src": "./server/index.ts",  
+        "use": "@vercel/node"
+      },
+      {
+        "src": "./client/build", 
+        "use": "@vercel/static"
+      }
+    ],
+  
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/server/server.ts"
       }
     ]
-}
+  }
+  
