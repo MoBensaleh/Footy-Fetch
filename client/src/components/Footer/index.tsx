@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
         backgroundColor: "background.main",
         borderTop: "3px solid #0d0d0d",
         bottom: 0,
-        width: '100%', 
+        width: '100%',
         position: 'absolute', 
       }}
     >
