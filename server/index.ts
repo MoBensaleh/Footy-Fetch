@@ -8,6 +8,9 @@ import dotenv from 'dotenv'
 import postRoutes from './routes/postRoutes'
 import connectDB from './db/conn';
 
+// Port
+const PORT = process.env.PORT || 5000;
+
 // URI Configuration
 dotenv.config()
 
@@ -49,9 +52,6 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
     }
     res.status(statusCode).json({ error: errorMessage });
 });
-
-// Port
-const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
 connectDB().then(()=>{
