@@ -1,7 +1,7 @@
 # Footy-Fetch
 
-Introduction
-This MERN stack project demonstrates my passion for soccer and my proficiency in leveraging AI and external APIs to create a dynamic and interactive web application. The project integrates data analytics and the ChatGPT API to provide users with insightful soccer-related content and analytics.
+** Overview
+"FootyFetch" is a MERN stack application designed to showcase my dual passions for soccer and cutting-edge technology, particularly in the realms of AI and data analytics. This project is a testament to my ability to harness the power of external APIs (like Reddit and OpenAI's ChatGPT) to create a dynamic and interactive soccer-related content platform.
 
 Features
 Reddit API Integration: Fetches soccer-related posts from Reddit, showcasing my ability to integrate and utilize external APIs.
