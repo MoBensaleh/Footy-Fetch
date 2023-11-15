@@ -34,7 +34,7 @@
 ## Setup and Execution
 [Instructions for setting up the environment, installing dependencies, and starting the server.]
 
-* **Local Development**
+**Local Development**
 To get started with EcoMetrics, follow these simple steps:
 
 1. Install dependencies in root, frontend and backend folder
@@ -49,4 +49,4 @@ npm i
 npm run dev
 ```
 
-
+**Deployment:** Vercel **https://footy-fetch.vercel.app/**
