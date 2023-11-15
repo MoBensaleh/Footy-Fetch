@@ -35,7 +35,7 @@
 [Instructions for setting up the environment, installing dependencies, and starting the server.]
 
 **Local Development**
-To get started with EcoMetrics, follow these simple steps:
+To get started with **Footy Fetch**, follow these simple steps:
 
 1. Install dependencies in root, frontend and backend folder
 
