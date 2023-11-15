@@ -30,3 +30,6 @@
 * TypeScript
 * SCSS/CSS
 * MaterialUI
+
+## Setup and Execution
+[Instructions for setting up the environment, installing dependencies, and starting the server.]
