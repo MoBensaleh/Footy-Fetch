@@ -1,5 +1,11 @@
+import { PostProps } from "../Post/types";
+
+interface Growth{
+    growth: number | string;
+}
+
 export interface AnalyticsData {
     postsCountLastWeek: number;
-    mostCommentedPostLastWeek: any[];
-    userInteractionGrowth: any[string | number];
+    mostCommentedPostLastWeek: PostProps;
+    userInteractionGrowth: Growth;
 };

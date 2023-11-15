@@ -114,7 +114,7 @@ const Post: React.FC<PostProps> = ({ categoryType, title, description = "", exte
   };
 
   return (
-    <Card className={styles.card} sx={{ maxWidth: 1000 }}>
+    <Card className={styles.card} sx={{ maxWidth: 1000, backgroundColor: "#343434", border: "none" }}>
       <CardActionArea>
         <CardContent>
           <Typography className={styles.title} component="p">{title}</Typography>
@@ -147,7 +147,7 @@ const Post: React.FC<PostProps> = ({ categoryType, title, description = "", exte
                 href={externalLink}
                 className={styles.button}
               >
-                <Typography variant="body2">
+                <Typography variant="body2" sx={{fontWeight: 900, fontSize: 18}}>
                   {categoryType === "general" ? "See Video" : "See News Article"}
                 </Typography>
               </Button>

@@ -3,6 +3,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   padding-bottom: 20px;
+  border-radius: 50px;
+
 
   &:hover {
     transform: translateY(-3px);
@@ -12,7 +14,7 @@
   .title {
     font-weight: bold;
     font-size: 1.5rem;
-    color: #004d40;
+    color: rgba(255, 255, 255, 0.87);
     text-align: center;
   }
 
@@ -27,14 +29,15 @@
     text-transform: none;
     margin: 0 auto;
     display: flex;
-    background-color: var(--clr-selected);
-    color: #fff;
+    background-color: var(--clr-primary);
+    color: #312E31;
     padding: 8px 12px;
     border-radius: 3px;
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-      background-color: var(--clr-primary);
+      background-color: var(--clr-selected);
+      color: rgba(255, 255, 255, 0.87);
     }
 
     @media screen and (min-width: 550px) {

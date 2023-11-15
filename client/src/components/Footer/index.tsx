@@ -11,8 +11,8 @@ const Footer: React.FC = () => {
   return (
     <BottomNavigation
       sx={{
-        backgroundColor: "background.main",
-        borderTop: "3px solid #0d0d0d",
+        backgroundColor: "inherit",
+        borderTop: "2px solid #0d0d0d",
         bottom: 0,
         width: '100%',
         position: 'absolute', 
@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
             <Link
               target="_blank"
               href="https://github.com/MoBensaleh/Footy-Fetch"
-              color="inherit"
+              color="#005143"
               sx={{
                 textDecoration: "none", 
               }}

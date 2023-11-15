@@ -23,7 +23,6 @@
         gap: 10px;
         @media screen and (min-width: 550px) {
             gap:40px;
-            
         }
     }
 }
@@ -40,7 +39,8 @@
 
 .postsCount,
 .growth {
-    background-color: #f8f8f8;
+    background-color: #343434;
+    color: #EBEBEB;
     border-radius: 50px;
     padding: 6px;
     width: 100%;
@@ -49,13 +49,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+   
     h2 {
         font-size: 1.2em;
         margin-bottom: 10px;
     }
+    h1{
+        font-size: 1.6em;
+        margin-bottom: 5px;
 
-    p {
+    }
+
+    p{
         font-size: 1em;
         margin: 0;
     }

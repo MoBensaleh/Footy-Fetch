@@ -14,10 +14,12 @@
     font-size: 1.3rem;
     text-transform: none;
     margin: 0 10px;
-    background-color: var(--clr-selected);
+    background-color: var(--clr-primary);
+    color: #312E31;
 
     &:hover {
-      background-color: var(--clr-primary);
+      background-color: var(--clr-selected);
+      color: rgba(255, 255, 255, 0.87);
     }
 
     @media screen and (min-width: 550px) {

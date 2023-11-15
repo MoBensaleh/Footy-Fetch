@@ -8,7 +8,6 @@ import NodeCache from 'node-cache';
 import PostModel from '../models/PostModel';
 import { IPost } from '../types';
 import OpenAI from 'openai';
-import { PostDocument } from '../models/PostModel';
 import mongoose from 'mongoose';
 
 const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
@@ -115,7 +114,6 @@ const getPastDates = (daysForWeekAgo: number, daysForTwoWeeksAgo: number): [Date
 
     return [oneWeekAgo, twoWeeksAgo];
 };
-// ... [Previous code]
 
 /**
  * Helper function to get the most commented post in the last week.
@@ -198,10 +196,10 @@ const getUserInteractionGrowth = async (oneWeekAgoUtc: number, twoWeeksAgoUtc: n
             ((lastWeekData.numComments - twoWeeksAgoData.numComments) / twoWeeksAgoData.numComments) * 100 : 
             'N/A';
 
-        return { growth };
+        return growth;
     } catch (error) {
         console.error('Error calculating user interaction growth: ', error);
-        return { growth: 'N/A' };
+        return 'N/A' ;
     }
 };
 

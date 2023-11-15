@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
       <Link href="/">
         <img src="/logo.png" className={styles.logo} alt="FootyFetch Logo" />
       </Link>
-      <h1 className={styles.title}>Explore what’s trending in the football world!</h1>
+      <h1 className={styles.title}>Explore what’s trending in the <span className={styles.football}>football</span> world!</h1>
       {!showCategories && (
         <Typography component="div" align="center" className={styles.home__buttons_wrapper}>
           <Button
