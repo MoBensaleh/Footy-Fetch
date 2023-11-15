@@ -7,7 +7,7 @@ import styles from '../../styles/Analytics.module.scss';
 
 
 const Analytics: React.FC = () => {
-    const [data, setData] = useState<AnalyticsData | any>(null);
+    const [data, setData] = useState<AnalyticsData | null>(null);
 
     useEffect(() => {
         // Fetch analytics data
@@ -28,7 +28,7 @@ const Analytics: React.FC = () => {
     const { postsCountLastWeek, mostCommentedPostLastWeek, userInteractionGrowth } = data;
     const postsCount = postsCountLastWeek;
     const mostCommentedPost = mostCommentedPostLastWeek;
-    const growthRate = userInteractionGrowth.growth;
+    const growthRate = userInteractionGrowth;
 
     return (
         <div className={styles.analytics}>
