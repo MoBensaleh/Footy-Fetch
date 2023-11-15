@@ -10,7 +10,7 @@ export const categorizeData = (posts: IPost[]) => {
   posts.forEach((post) => {
     if (post.description) {
       discussionsArray.push(post);
-    } else if (post.externalLink && !post.externalLink.includes("youtu")) {
+    } else if (post.externalLink && !post.externalLink.includes("youtu") && !post.externalLink.includes("blob") && !post.externalLink.includes("packaged")) {
       newsArray.push(post);
     } else {
       generalArray.push(post);
