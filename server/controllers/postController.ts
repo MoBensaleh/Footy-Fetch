@@ -50,7 +50,7 @@ export const getPosts = async (req: Request, res: Response): Promise<void> => {
         res.status(200).send(categorizedData);
     } catch (err) {
         console.error("Error in getPosts: ", err);
-        res.status(500).send({ error: 'Failed to fetch and process posts' });
+        res.status(500).send({ error: `Failed to fetch and process posts: ${err}` });
     }
 };
 

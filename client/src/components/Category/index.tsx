@@ -29,8 +29,6 @@ const Categories: React.FC = () => {
           general: []
         };
 
-        // const data = JSON.parse(response.data);
-        console.log(response.data)
         response.data.forEach((category: any) => {
           switch (category.name) {
             case 'news':
