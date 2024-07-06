@@ -36,7 +36,7 @@ const HomePage: React.FC = () => {
         <div className={styles.footer}>
           <h3 className={styles.footerText}>
             Data for this application is fetched from Reddit's{" "}
-            <Link target="_blank" href="https://www.reddit.com/r/soccer/">r/soccer</Link> subreddit.
+            <Link target="_blank" href="https://www.reddit.com/r/football/">r/football</Link> subreddit.
           </h3>
           <h3 className={styles.footerText}>
             This project was developed by <Link target="_blank" href="https://www.mohamedbensaleh.com/">Mohamed Bensaleh</Link>.
