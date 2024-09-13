@@ -12,7 +12,7 @@ import mongoose from 'mongoose';
 
 const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 const openai = new OpenAI({
-    apiKey: process.env.API_KEY 
+    apiKey: process.env.API_KEY
 });
 
 
