@@ -44,6 +44,7 @@ const HomePage: React.FC = () => {
           </h3>
         </div>
       )}
+      
       {!showCategories && <Footer/>}
     </div>
   );
