@@ -22,7 +22,7 @@ app.use(morgan("dev"));
 app.use(cors(
     { 
     origin: "*", 
-    methods: ["GET","POST"],  
+    methods: ["GET","POST"],
     credentials: true 
     }
 ));
