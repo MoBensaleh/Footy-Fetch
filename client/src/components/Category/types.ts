@@ -1,7 +1,7 @@
 // Represents a single post object
 export interface PostType {
   title: string;
-  description: string;
+  selfText: string;
   externalLink?: string;
   url?: string;
   _id: string;

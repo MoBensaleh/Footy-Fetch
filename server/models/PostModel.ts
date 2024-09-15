@@ -22,7 +22,7 @@ const CategorySchema = new mongoose.Schema<CategoryDocument>({
     posts: [{
         _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
         title: String,
-        description: String,
+        selfText: String,
         externalLink: String,
         url: String,
         upvoteRatio: {

@@ -84,9 +84,9 @@ const customTheme = (outerTheme: Theme) =>
     },
   });
 
-const Post: React.FC<PostProps> = ({ categoryType, title, description = "", externalLink, url, _id }) => {
+const Post: React.FC<PostProps> = ({ categoryType, title, selfText = "", externalLink, url, _id }) => {
   const outerTheme = useTheme();
-  var desc = description === null ? "" : description;
+  var desc = selfText === null ? "" : selfText;
 
   const [isPromptOpen, setIsPromptOpen] = useState(false);
   const [question, setQuestion] = useState("");

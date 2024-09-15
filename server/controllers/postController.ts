@@ -3,12 +3,13 @@ import { Request, Response } from 'express';
 import { categorizeData } from '../helpers/categorizationAlgorithm';
 import { createPosts } from '../helpers/postManagement';
 import PostsModel from '../models/PostModel';
-import { REDDIT_ENDPOINT } from '../config/constants';
+import { NUM_POSTS, SUBREDDIT } from '../config/constants';
 import NodeCache from 'node-cache';
 import PostModel from '../models/PostModel';
 import { IPost } from '../types';
 import OpenAI from 'openai';
 import mongoose from 'mongoose';
+import RedditClient from "reddit-client-api";
 
 const myCache = new NodeCache({ stdTTL: 100, checkperiod: 120 });
 const openai = new OpenAI({
@@ -23,8 +24,17 @@ const openai = new OpenAI({
  */
 export const getPosts = async (req: Request, res: Response): Promise<void> => {
     try {
-        const response = await axios.get(REDDIT_ENDPOINT);
-        const posts = response.data;
+        const config = {
+          apiKey: `${process.env.REDDIT_APIKEY}`,
+          apiSecret: `${process.env.REDDIT_APISECRET}`,
+          userAgent: `${process.env.REDDIT_USERAGENT}`,
+        };
+        const myRedditClient = new RedditClient(config);
+        await myRedditClient.auth({ username: `${process.env.REDDIT_USERNAME}`, password: `${process.env.REDDIT_PASSWORD}` });
+
+        const response = await myRedditClient.getHotPostsBySubreddit(SUBREDDIT, NUM_POSTS);
+
+        const posts = response;
         const cleanedPosts = createPosts(posts);
         const categorizedData = categorizeData(cleanedPosts);
 
@@ -218,7 +228,7 @@ export const askChatGPTAboutPost = async (req: Request, res: Response) => {
             return res.status(404).json({ message: "Post not found!" });
         }
 
-        const prompt = `This is a post from Reddit titled "${foundPost.title}". The description says: "${foundPost.description}". ${question}`;
+        const prompt = `This is a post from Reddit titled "${foundPost.title}". The description says: "${foundPost.selfText}". ${question}`;
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo-0613",
             messages: [{ role: "user", content: prompt }],

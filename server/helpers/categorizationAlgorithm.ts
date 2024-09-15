@@ -8,9 +8,9 @@ export const categorizeData = (posts: IPost[]) => {
   console.log(posts);
 
   posts.forEach((post) => {
-    if (post.description) {
+    if (post.selfText || (post.externalLink && post.externalLink.includes("redd"))) {
       discussionsArray.push(post);
-    } else if (post.externalLink && !post.externalLink.includes("youtu") && !post.externalLink.includes("blob") && !post.externalLink.includes("packaged")) {
+    } else if (post.externalLink && !post.externalLink.includes("youtu") && !post.externalLink.includes("blob") && !post.externalLink.includes("packaged") && !post.externalLink.includes("caulse") && !post.externalLink.includes("stream")) {
       newsArray.push(post);
     } else {
       generalArray.push(post);

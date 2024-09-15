@@ -10,7 +10,7 @@ interface RawPostData {
     title: string;
     selftext?: string;
     url_overridden_by_dest?: string;
-    permalink?: string;
+    url?: string;
     upvote_ratio: number;
     score: number;
     num_comments: number;
@@ -27,16 +27,16 @@ interface RawPostData {
 const createPostFromData = (postData: RawPostData): Post => {
     const _id = new mongoose.Types.ObjectId();
     const title = postData.title;
-    const description = postData.selftext && postData.selftext !== "" ? postData.selftext : null;
+    const selfText = postData.selftext && postData.selftext !== "" ? postData.selftext : null;
     const externalLink = postData.url_overridden_by_dest && postData.url_overridden_by_dest !== "" ? postData.url_overridden_by_dest : null;
-    const url = postData.permalink && postData.permalink !== "" ? `https://www.reddit.com${postData.permalink}` : null;
+    const url = postData.url && postData.url !== "" ? postData.url : null;
     const upvoteRatio = postData.upvote_ratio;
     const score = postData.score;
     const numComments = postData.num_comments;
     const author = postData.author;
     const createdUTC = postData.created_utc;
 
-    return new Post(_id, title, description, externalLink, url, upvoteRatio, score, numComments, author, createdUTC);
+    return new Post(_id, title, selfText, externalLink, url, upvoteRatio, score, numComments, author, createdUTC);
 };
 
 /**
@@ -49,7 +49,7 @@ const createPosts = (posts: any): Post[] => {
     const cleanedPosts: Post[] = [];
 
     // Using 'slice' to trim the array from the start, then map over the resulting array
-    posts.data.children.slice(2, NUM_POSTS).map((child: any) => {
+    posts.slice(2, NUM_POSTS).map((child: any) => {
         const rawPostData: RawPostData = child.data;
         cleanedPosts.push(createPostFromData(rawPostData));
     });

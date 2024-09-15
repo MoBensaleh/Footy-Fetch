@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 export class Post implements IPost {
   _id: mongoose.Types.ObjectId;
   title: string;
-  description: string | null;
+  selfText: string | null;
   externalLink: string | null;
   url: string | null;
   upvoteRatio: number;
@@ -15,7 +15,7 @@ export class Post implements IPost {
   constructor(
     _id: mongoose.Types.ObjectId,
     title: string,
-    description: string | null,
+    selfText: string | null,
     externalLink: string | null,
     url: string | null,
     upvoteRatio: number,
@@ -26,7 +26,7 @@ export class Post implements IPost {
   ) {
     this._id = _id;
     this.title = title;
-    this.description = description;
+    this.selfText = selfText;
     this.externalLink = externalLink;
     this.url = url;
     this.upvoteRatio = upvoteRatio;

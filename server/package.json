@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "", 
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,7 +18,8 @@
     "mongoose": "^7.5.2",
     "morgan": "^1.10.0",
     "node-cache": "^5.1.2",
-    "openai": "^4.12.4"
+    "openai": "^4.12.4",
+    "reddit-client-api": "^0.0.8"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
